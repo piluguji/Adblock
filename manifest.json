@@ -1,13 +1,17 @@
 {
-    "name": "AdBlocker",
-    "version": "1.0",
-    "description": "CS4501 AdBlocker Chrome Extension",
-    "permissions": ["webRequest", "webRequestBlocking", "<all_urls>"],
-    "background": {
-        "scripts": ["background.js"]
-    },
     "manifest_version": 3,
-    "browser_action": {
-        "default_title": "AdBlock"
+    "name": "Simple Ad Blocker",
+    "version": "1.0.0",
+    "permissions": [
+        "declarativeNetRequest"
+    ],
+    "declarative_net_request": {
+        "rule_resources": [
+            {
+                "id": "ruleset_1",
+                "enabled": true,
+                "path": "rules.json"
+            }
+        ]
     }
 }
