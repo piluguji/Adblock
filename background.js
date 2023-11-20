@@ -18,19 +18,15 @@ chrome.runtime.onInstalled.addListener(async () => {
     }
 });
 
-if (url_list.length === 0) {
-    await setupWebRequestListener();
-}else{
-    chrome.webRequest.onBeforeRequest.addListener(
-        function (details) {
-            console.log("on");
-            if (extension_status == "on") {
-                return { cancel: true };
-            } else {
-                return { cancel: false };
-            }
-        },
-        { urls: url_list },
-        ["blocking"]
-    );
-}
+chrome.webRequest.onBeforeRequest.addListener(
+    function (details) {
+        console.log("on");
+        if (extension_status == "on") {
+            return { cancel: true };
+        } else {
+            return { cancel: false };
+        }
+    },
+    { urls: url_list },
+    ["blocking"]
+);
